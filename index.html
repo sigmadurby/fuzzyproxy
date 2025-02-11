@@ -52,6 +52,7 @@
         function toggleMusic() {
             var music = document.getElementById("background-music");
             var button = document.querySelector(".music-button");
+            music.volume = 1.0; // Set music volume to max
             if (music.paused) {
                 music.play();
                 button.textContent = "Pause Music";
@@ -65,7 +66,7 @@
             var query = document.getElementById("searchQuery").value.trim();
             if (query) {
                 let url = query.startsWith("http") ? query : "https://" + query;
-                window.location.href = "/uv/service/" + encodeURIComponent(url);
+                window.location.href = "uv/" + encodeURIComponent("service/" + url);
             }
         }
     </script>
