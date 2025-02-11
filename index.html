@@ -11,10 +11,11 @@
             text-align: center;
             font-family: Arial, sans-serif;
         }
-        input, button {
+        input {
             padding: 10px;
             margin: 10px;
             font-size: 16px;
+            width: 80%;
         }
         .search-container {
             margin-top: 50px;
@@ -26,17 +27,16 @@
 <body>
     <h1>🔒 Unblocked Proxy 🔒</h1>
     <audio id="background-music" autoplay loop>
-        <source src="your-mp3-file.mp3" type="audio/mp3">
+        <source src="lofi-music-hip-hop-295207.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
     <div class="search-container">
         <p>Search for unblocked sites or games:</p>
-        <input type="text" id="searchQuery" placeholder="Enter site or game">
-        <button onclick="startProxy()">Go</button>
+        <input type="text" id="searchQuery" placeholder="Enter site or game" onkeydown="if(event.key==='Enter') startProxy()">
     </div>
     <script>
         function startProxy() {
-            var query = document.getElementById("searchQuery").value;
+            var query = document.getElementById("searchQuery").value.trim();
             if (query) {
                 let url = query.startsWith("http") ? query : "https://" + query;
                 window.location.href = "/uv/service/" + btoa(url);
