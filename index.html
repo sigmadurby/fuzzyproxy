@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calm Music Proxy</title>
+    <script src="https://cdn.jsdelivr.net/gh/titaniumnetwork-dev/Ultraviolet@latest/uv.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/titaniumnetwork-dev/Ultraviolet@latest/uv.config.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #1a1a1a;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        audio {
+            margin-top: 20px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎵 Calm Music Proxy 🎵</h1>
+    <p>Enter a URL to play custom music:</p>
+    <input type="text" id="musicUrl" placeholder="Enter music URL">
+    <button onclick="playMusic()">Play</button>
+    <br>
+    <audio id="audioPlayer" controls>
+        <source src="/mnt/data/lofi-music-hip-hop-295207.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const uv = new UV();
+
+        function playMusic() {
+            var url = document.getElementById('musicUrl').value;
+            if (url) {
+                var proxiedUrl = uv.rewriteUrl(url);
+                document.getElementById('audioPlayer').src = proxiedUrl;
+                document.getElementById('audioPlayer').play();
+            }
+        }
+    </script>
+</body>
+</html>
