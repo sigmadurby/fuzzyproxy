@@ -20,6 +20,8 @@
             margin-top: 50px;
         }
     </style>
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
 </head>
 <body>
     <h1>🔒 Unblocked Proxy 🔒</h1>
@@ -30,13 +32,14 @@
     <div class="search-container">
         <p>Search for unblocked sites or games:</p>
         <input type="text" id="searchQuery" placeholder="Enter site or game">
-        <button onclick="search()">Go</button>
+        <button onclick="startProxy()">Go</button>
     </div>
     <script>
-        function search() {
+        function startProxy() {
             var query = document.getElementById("searchQuery").value;
             if (query) {
-                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query) + " site:unblocked games";
+                let url = query.startsWith("http") ? query : "https://" + query;
+                window.location.href = "/uv/service/" + btoa(url);
             }
         }
     </script>
