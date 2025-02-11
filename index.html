@@ -20,26 +20,52 @@
         .search-container {
             margin-top: 50px;
         }
+        .music-button {
+            padding: 10px;
+            margin: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
     <script src="uv/uv.bundle.js"></script>
     <script src="uv/uv.config.js"></script>
 </head>
 <body>
     <h1>🔒 Unblocked Proxy 🔒</h1>
-    <audio id="background-music" autoplay loop>
+    
+    <button class="music-button" onclick="toggleMusic()">Play Music</button>
+    <audio id="background-music" loop>
         <source src="lofi-music-hip-hop-295207.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
+    
     <div class="search-container">
         <p>Search for unblocked sites or games:</p>
         <input type="text" id="searchQuery" placeholder="Enter site or game" onkeydown="if(event.key==='Enter') startProxy()">
     </div>
+    
     <script>
+        function toggleMusic() {
+            var music = document.getElementById("background-music");
+            var button = document.querySelector(".music-button");
+            if (music.paused) {
+                music.play();
+                button.textContent = "Pause Music";
+            } else {
+                music.pause();
+                button.textContent = "Play Music";
+            }
+        }
+
         function startProxy() {
             var query = document.getElementById("searchQuery").value.trim();
             if (query) {
                 let url = query.startsWith("http") ? query : "https://" + query;
-                window.location.href = "/uv/service/" + btoa(url);
+                window.location.href = "/uv/service/" + encodeURIComponent(url);
             }
         }
     </script>
