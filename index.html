@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calm Music Proxy</title>
+    <title>Unbl0ck3d + Music</title>
     <script src="https://cdn.jsdelivr.net/gh/titaniumnetwork-dev/Ultraviolet@latest/uv.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/titaniumnetwork-dev/Ultraviolet@latest/uv.config.js"></script>
     <style>
@@ -33,19 +33,36 @@
         button:hover {
             background-color: #45a049;
         }
-        audio {
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
             margin-top: 20px;
+        }
+        audio {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 80%;
         }
     </style>
 </head>
 <body>
-    <h1>🎵 Calm Music Proxy 🎵</h1>
-    <p>Enter a URL to play custom music:</p>
+    <h1>🎵 Unbl0ck3d stuff</h1>
+    <p>Enter a music URL to play in the background:</p>
     <input type="text" id="musicUrl" placeholder="Enter music URL">
-    <button onclick="playMusic()">Play</button>
-    <br>
-    <audio id="audioPlayer" controls>
+    <button onclick="playMusic()">Play Music</button>
+    
+    <br><br>
+
+    <p>Search for unblocked sites or games:</p>
+    <input type="text" id="searchUrl" placeholder="Enter site URL (e.g., google.com)">
+    <button onclick="browseSite()">Go</button>
+
+    <iframe id="proxyFrame"></iframe>
+
+    <audio id="audioPlayer" autoplay loop>
         <source src="/mnt/data/lofi-music-hip-hop-295207.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -59,6 +76,14 @@
                 var proxiedUrl = uv.rewriteUrl(url);
                 document.getElementById('audioPlayer').src = proxiedUrl;
                 document.getElementById('audioPlayer').play();
+            }
+        }
+
+        function browseSite() {
+            var siteUrl = document.getElementById('searchUrl').value;
+            if (siteUrl) {
+                var proxiedSite = uv.rewriteUrl("https://" + siteUrl);
+                document.getElementById('proxyFrame').src = proxiedSite;
             }
         }
     </script>
