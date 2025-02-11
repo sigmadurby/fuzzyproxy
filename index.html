@@ -4,58 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unbl0ck3d Proxy</title>
-    <script src="https://cdn.jsdelivr.net/gh/titaniumnetwork-dev/Ultraviolet@latest/uv.bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/titaniumnetwork-dev/Ultraviolet@latest/uv.config.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #121212;
+            background-color: #111;
             color: white;
-            margin: 0;
-            padding: 20px;
+            text-align: center;
+            font-family: Arial, sans-serif;
         }
-        input {
-            width: 80%;
+        input, button {
             padding: 10px;
             margin: 10px;
-            border-radius: 5px;
-            border: none;
+            font-size: 16px;
         }
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #ff9800;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #e68900;
-        }
-        audio {
-            display: none;
+        .search-container {
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <h1>🔓 Unbl0ck3d Proxy 🔓</h1>
-    <p>Search for unblocked sites or games:</p>
-    <input type="text" id="proxyUrl" placeholder="Enter URL">
-    <button onclick="startProxy()">Go</button>
-    
-    <audio id="audioPlayer" autoplay loop>
-        <source src="lofi-music-hip-hop-295207.mp3" type="audio/mpeg">
+    <h1>🔒 Unblocked Proxy 🔒</h1>
+    <audio id="background-music" autoplay loop>
+        <source src="your-mp3-file.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
-
+    <div class="search-container">
+        <p>Search for unblocked sites or games:</p>
+        <input type="text" id="searchQuery" placeholder="Enter site or game">
+        <button onclick="search()">Go</button>
+    </div>
     <script>
-        const uv = new UV();
-
-        function startProxy() {
-            var url = document.getElementById('proxyUrl').value;
-            if (url) {
-                window.location.href = uv.rewriteUrl(url);
+        function search() {
+            var query = document.getElementById("searchQuery").value;
+            if (query) {
+                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query) + " site:unblocked games";
             }
         }
     </script>
